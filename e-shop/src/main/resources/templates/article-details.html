@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: layout}">
+<head>
+    <title>Article Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- <div th:insert="~{/src/style :: css}"></div> -->
+
+    <style>
+        .btnback {
+        width: 70px;
+        height: 30px;
+      }
+    </style>
+</head>
+<body>
+    <div th:fragment="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <img th:src="@{'/uploads/' + ${article.imageUrl}}" class="w-100" alt="Product Image">
+                </div>
+                <div class="col-md-8 d-flex flex-column">
+                    <div>
+                        <h1 class="mb-4" th:text="${article.title}"></h1>
+                        <p class="text-dark" th:text="${article.longDescription}"></p>
+                        <p>Views: <span th:text="${article.viewCount}"></span></p>
+                    </div>
+                    <div class="mt-auto">
+                        <a th:href="@{/Article/list}" class="btn btn-outline-info btn-sm">Back To List</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:fragment="scripts"></div>
+</body>
+</html>

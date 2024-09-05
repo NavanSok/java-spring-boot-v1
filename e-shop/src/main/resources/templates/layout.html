@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="layout">
+<head>
+    <meta charset="UTF-8"/>
+    <title>E-Shop Management</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" integrity="sha384-nQrSJbMcDhzGqwujtRYl7C9CChcHXLlYWcuQZ5r8sTx9qmUlz5+LIlT6WFCNs2vQ" crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css">
+
+    <style>
+        /* layout */
+        .row {
+            flex: 1;  /* Allow row to grow to fill available space */
+        }
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 500;
+        }
+        .nav-link:hover {
+            background-color: rgb(255, 255, 255);
+            color: #456AD8 !important;
+            font-weight: bold;
+            border-radius: 25px;
+        }
+        .dropdown-menu {
+            padding: 0%;
+            margin-top: 7px;
+        }
+        /* .dropdown:hover .dropdown-menu {
+            display: block;
+        } */
+        #content {
+            z-index: 499;
+        }
+        a:hover {
+            text-decoration: none;
+        }
+        .dropdown-item:hover {
+            color: #456AD8;
+        }
+
+        #lang option:first-child{
+            display: none;
+        }
+        .item{
+            white-space: nowrap;
+            
+        }
+
+        .custom-select-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 200px;
+    user-select: none;
+}
+
+.custom-select {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.custom-select__trigger {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+}
+
+.custom-select__trigger span {
+    margin-right: 10px;
+}
+
+.custom-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s;
+    z-index: 2;
+}
+
+.custom-select.open .custom-options {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.custom-option {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.custom-option:hover {
+    background: #f2f2f2;
+}
+
+.custom-option img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.arrow {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #000000;
+}
+
+.open .arrow {
+    border-top: 0;
+    border-bottom: 5px solid #000000;
+}
+
+#cart-item-count{
+    position: absolute;
+    top: 10%;
+    right: 215px;
+    background: red !important;
+    border-radius: 100%;
+    width: 18px;
+    height: 20px;
+    font-size: 14px;
+    text-align: center;
+}
+    </style>
+</head>
+<body>
+<div th:fragment="layout">
+    <nav class="navbar navbar-expand-lg d-flex justify-content-between" style="background-color: #456AD8;">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white fw-bold" href="/aubshop/home">E-SHOP</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon fa-solid fa-bars text-white text-center pt-1"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end pr-3" id="navbarNav">
+                <ul class="navbar-nav navItems text mr-3 item">
+                    <li class="nav-item dropdown">
+                        <a th:text="#{product}" th:href="@{/products}" class="nav-link text-white dropdown-toggle" id="productDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            PRODUCTS
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="productDropdown" id="productDropdownMenu">
+                            <!-- Categories will be populated here -->
+                        </div> 
+                    </li>
+                    
+                    
+                    <li class="nav-item">
+                        <a th:text="#{promotion}" th:href="@{/Article/list}" class="nav-link text-white">PROMOTION</a>
+                    </li>
+                    
+                    <li class="nav-item nav-item-cart mycart">
+                        <a href="/aubshop/products/cart-page">
+                            <i class="nav-link fa-solid fa-cart-shopping text-white"></i>
+                            <span id="cart-item-count" class="text-white">0</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item ml-5">
+                        <select name="lang" id="language" class="form-control w-100">
+                            <option th:text="#{language}" value="">Language</option>
+                            <option th:text="#{english}" value="en"><img src="../image/cambodiaflag.png" alt="">English</option>
+                            <option th:text="#{khmer}" value="kh"><img src="../image/cambodiaflag.png" alt="">Khmer</option>
+                            <option th:text="#{thai}" value="th"><img src="../image/cambodiaflag.png" alt="">Thai</option>
+                        </select> 
+                    </li>              
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <div id="content" class="col-md-12">
+            <div th:insert="~{::content}"></div>
+        </div>
+    </div>
+</div>
+
+
+<!-- <div th:insert="~{::scripts}"></div> -->
+
+  <div th:fragment="scripts">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/4000b889e3.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    
+  </div>
+  <script>
+
+
+    $(document).ready(function()
+    {
+        
+        $('#cart-item-count').text(getCookie());
+
+        function getCookie(name) {
+            const nameEQ = name + "=";
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                let c = cookies[i];
+                while (c.charAt(0) === ' ') c = c.substring(1);
+                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        // Function to set a cookie
+        function setCookie(name, value, days) {
+            const expires = new Date();
+            expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
+            document.cookie = name + "=" + (value || "") + ";expires=" + expires.toUTCString() + ";path=/";
+        }
+
+        // Initial cart item count
+        let cartItemCount = parseInt(getCookie('cartItemCount')) || 0;
+        $('#cart-item-count').text(cartItemCount);
+
+        function updateCartItemCount(newCount) {
+            cartItemCount = newCount;
+            $('#cart-item-count').text(cartItemCount);
+            setCookie('cartItemCount', cartItemCount, 7);
+        }
+
+        // Function to update cart item count
+        // function updateCartItemCount(newCount) {
+        //     $('#cart-item-count').text(newCount);
+        //     localStorage.setItem('cartItemCount', newCount);
+        // }
+
+        $("#language").change(function(){
+            langVal = $(this).val();
+            if(langVal != ""){
+                window.location.href = "/aubshop/home?lang=" + langVal;
+                
+            }
+        });
+        // function changeLanguage(lang) {
+        // if (lang) {
+        //     window.location.href = "@{/home?lang=" + lang +"}";
+        // }
+        // };
+        $('#productDropdown').on('click', function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        
+        // Manually toggle the dropdown
+        $(this).dropdown('toggle');
+        });
+        
+        $.ajax({
+            url: '[[@{/categories}]]', // Use Thymeleaf to resolve the URL
+                type: 'GET',
+                dataType: 'json',
+                data: {},
+                success: function(data) {
+                    console.log('Categories fetched:', data); // Debug statement
+                        // Populate dropdown
+                        const dropdownMenu = $('#productDropdownMenu');
+                        dropdownMenu.empty(); // Clear existing items
+
+                        const allLink = $('<a>', {
+                            class: 'dropdown-item',
+                            href: '/aubshop/products#allproduct',
+                            text: 'All'
+                        });
+                        dropdownMenu.append(allLink);
+
+                        data.forEach(category => {
+                            const categoryLink = $('<a>', {
+                                class: 'dropdown-item',
+                                href: `/aubshop/products?cate_id=${category.id}`,
+                                text: category.categoryName
+                            });
+                            dropdownMenu.append(categoryLink);
+                        });
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error fetching categories:', error); // Debug statement
+                }
+            });
+            function deleteCookie(name) {
+                var expires = "Thu, 01 Jan 1970 00:00:00 UTC";
+                document.cookie = name + "=; expires=" + expires + "; path=/";
+            }
+
+          
+        });
+
+    </script>
+</body>
+</html>
