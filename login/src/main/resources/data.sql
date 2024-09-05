@@ -1,1 +1,0 @@
-INSERT INTO login_model (username, password) VALUES ('admin', '123');
