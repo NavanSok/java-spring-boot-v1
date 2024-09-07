@@ -32,9 +32,6 @@ public class ProductService {
     private ProductRepository productRepository;
     
     @Autowired
-    private ProductService productService;
-    
-    @Autowired
     private UserRepository userRepository;
      
 
@@ -66,21 +63,9 @@ public class ProductService {
             dto.setCreateByUsername(getUsernameById(product.getCreated_by()));  
             dto.setUpdateByUsername(getUsernameById(product.getUpdateBy()));            
             dto.setUpdated_date(product.getUpdated_date());         
-            // String createByUsername = productService.getUsernameById(product.getCreated_by());
-            // product.setCreatebyUsername(createByUsername);
             return dto;
         });
 
-        // products.forEach(product -> {
-        //     if (product.getCategory() != null) {
-        //         Hibernate.initialize(product.getCategory()); 
-        //     }
-        //     String createByUsername = productService.getUsernameById(product.getCreated_by());
-        //     product.setCreatebyUsername(createByUsername);
-        // });
-        
-        // LOGGER.info("Products fetched: " + products.toString());
-        // return products;
     }
 
    

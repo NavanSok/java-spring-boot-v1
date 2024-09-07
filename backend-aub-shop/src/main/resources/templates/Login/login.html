@@ -69,13 +69,19 @@
             left: 50%;
             transform: translate(-50%, -50%);
         }
+        body {
+            background-image: url('../../Img/blob-scene-haikei.png');
+            background-size: cover; /* Ensures the image covers the entire page */
+            background-position: center; /* Centers the image */
+            background-repeat: no-repeat; /* Prevents the image from repeating */
+        }
     </style>
   </head>
-<body class="bg-gradient-primary">
+  <body class="bg-info">
     <div class="container center">
         <!-- Outer Row -->
         <div class="row justify-content-center">
-            <div class="col-xl-10 col-lg-12 col-md-9">
+            <div class="col-xl-19 col-lg-8 col-md-8">
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
@@ -135,7 +141,7 @@
 
                                             <div class="form-group">
                                                 <div class="col-md-offset-2">
-                                                    <button type="submit" class="btn btn-primary btn-user btn-block">Login</button>
+                                                    <button type="submit" class="btn btn-info btn-user btn-block">Login</button>
                                                 </div>
                                             </div>
 

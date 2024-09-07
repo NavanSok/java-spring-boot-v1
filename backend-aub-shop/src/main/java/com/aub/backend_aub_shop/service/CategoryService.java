@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 
 import com.aub.backend_aub_shop.dto.CategoryDTO;
 import com.aub.backend_aub_shop.model.Category;
-import com.aub.backend_aub_shop.model.Product;
 import com.aub.backend_aub_shop.model.UserModel;
 import com.aub.backend_aub_shop.repository.CategoryRepository;
 import com.aub.backend_aub_shop.repository.UserRepository;
@@ -23,12 +22,9 @@ import com.aub.backend_aub_shop.util.UserSessionUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
-@Service("categoryService")
+@Service
 public class CategoryService {
     @Autowired CategoryRepository categoryRepository;
-    @Autowired
-    private CategoryService categoryService;  // Assuming this service has a method to get a username by ID
-
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CategoryService.class);
 
@@ -39,14 +35,8 @@ public class CategoryService {
  * @param pageSize
  * @return
  */
-public Page<CategoryDTO> findAll(String cate_name, int pageNumber, int pageSize) {
-    Pageable pageable = PageRequest.of(pageNumber, pageSize);
-
-    // Product pro = new Product();
-    //     if (cate_name == null || cate_name.trim().isEmpty()) {
-    //         return categoryRepository.findAll(pageable);
-    //     }
-    //     return categoryRepository.findByCategoryNameContainingIgnoreCase(cate_name, pageable);
+    public Page<CategoryDTO> findAll(String cate_name, int pageNumber, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNumber, pageSize);
         Page<Category> category = categoryRepository.findByCategoryNameContainingIgnoreCase(cate_name, pageable);
         return category.map(cate -> {
             CategoryDTO dto = new CategoryDTO();

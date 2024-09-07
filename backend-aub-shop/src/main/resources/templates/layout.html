@@ -53,7 +53,7 @@
 </head>
 <body>
     <div id="layout" th:fragment="layout">
-        <header class="bg-primary text-white fixed-top navbar">
+        <header class="bg-info text-white fixed-top navbar">
             <div class="container-fluid d-flex justify-content-between align-items-center text-nowrap">
                 <div class="navbar-brand d-none d-md-block">
                     <h3>Admin Dashboard</h3>
@@ -71,7 +71,7 @@
                         <!-- Dropdown menu -->
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                             <!-- Change Language Button -->
-                            <div class="btn-group dropleft">
+                            <!-- <div class="btn-group dropleft">
                                 <button id="dropdownLeft" class="dropdown-item dropdown-toggle w-100 border-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Change Language
                                 </button>
@@ -80,7 +80,7 @@
                                     <a class="dropdown-item" href="#" onclick="changeLanguage('kh')">Khmer</a>
                                     <a class="dropdown-item" href="#" onclick="changeLanguage('th')">Thai</a>
                                 </div>
-                            </div>
+                            </div> -->
                             <!-- Change Password Button -->
                             <button type="button" class="dropdown-item ml-3 btn" data-toggle="modal" data-target="#changePWDModal">
                                 Change Password
@@ -136,18 +136,18 @@
             </div>
         </div>
 
-        <div class="container-fluid">
+        <div class="container-fluid ">
             <div class="row">
-                <nav id="sidebar" class="col-lg-2 d-none d-lg-block bg-dark text-white">
+                <nav id="sidebar" class="col-lg-2 d-none d-lg-block bg-info text-white">
                     <div class="sidebar-sticky">
                         <div class="mt-5 pt-5">
-                            <button class="w-100 btn btn-sidebar text-left text-white" type="button">
+                            <!-- <button class="w-100 btn btn-sidebar text-left text-white" type="button">
                                 <div class="d-flex align-items-center justify-content-between">
                                     Dashboard
                                 </div>
-                            </button>
+                            </button> -->
 
-                           <hr style="color: white; background-color: white; border: none; height: 1px;">
+                           <!-- <hr style="color: white; background-color: white; border: none; height: 1px;"> -->
 
                             <button class="w-100 btn btn-sidebar text-left text-white" type="button" data-toggle="collapse" data-target="#collapseUser" aria-expanded="false" aria-controls="collapseExample">
                                 <div class="d-flex align-items-center justify-content-between">
@@ -182,7 +182,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="">
+                        <!-- <div class="">
                             <button class="w-100 btn btn-sidebar text-left text-white" type="button" data-toggle="collapse" data-target="#collapseArticle" aria-expanded="false" aria-controls="collapseExample">
                                 <div class="d-flex align-items-center justify-content-between">
                                     Article Management
@@ -196,7 +196,7 @@
                                     </li>
                                 </ul>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </nav>
                 <main role="main" class="col-lg-10 px-4">
